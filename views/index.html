@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Static Code Analyzer</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <link href="/styles/index.css" rel="stylesheet"/>
+        <script src="../scripts/Analyzer.js"></script>
+    </head>
+    <body ng-app="CodeAnalyzerApp">
+        <main ng-controller="AnalyzerCtrl">
+            <h1>Code Analyzer</h1>
+            <label>Select language: </label>
+            <select ng-model="selectedLanguage" ng-options="language for language in languages"></select>
+            <label>OR Upload file</label>
+            <input type="file" id="uploadfile" onchange="angular.element(this).scope().readFile(this)"/>
+            <div class="CodeMirror">
+                <textarea autocorrect="off" name="codearea"  autocapitalize="off" spellcheck="false" tabindex="0" style="width: 1000px; height: 40em; outline: none;"></textarea>
+            </div>
+            <button ng-click="analyzeCode()" class="button-analyzer">Analyze</button>
+            <div>
+                <div class="linting-error" ng-repeat="error in lintingData.errors track by $index">
+                    <span>{{error.message + " at line: " + error.line + ", column " + error.column}}</span>
+                    <p>
+                        {{lintingData.lines[error.line]}}
+                    </p>
+                </div>
+            </div>
+        </main>
+        
+    </body>
+</html>

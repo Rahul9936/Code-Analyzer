@@ -1,0 +1,24 @@
+.CodeMirror {
+    background: #1d1e1c;
+    font-family: monaco,monospace;
+    height: auto;
+    width: 600px;
+    margin-top: 10px;
+}
+
+.CodeMirror textarea {
+    width: 1000px;
+    height: 40em;
+    outline: none;
+}
+
+.button-analyzer {
+    margin-top: 10px;
+    padding: 5px 10px;
+}
+
+.linting-error {
+    border: 1px solid;
+    padding: 5px;
+    margin-bottom: 5px;
+}
